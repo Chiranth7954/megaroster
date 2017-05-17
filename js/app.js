@@ -19,11 +19,15 @@ const megaroster = {
       name: f.studentName.value,
     }
 
-    this.students.push(student)
+    this.students.unshift(student)
 
     const listItem = this.buildListItem(student)
-    this.studentList.appendChild(listItem)
+    this.prependChild(this.studentList, listItem)
     f.reset()
+  },
+
+  prependChild(parent, child) {
+    parent.insertBefore(child, parent.firstChild)
   },
 
   buildListItem(student) {

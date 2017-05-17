@@ -1,3 +1,6 @@
+// need an empty div in index.html called 'details'
+// this is from Day 2 HW instead of Day 3 Class
+
 const App = {
 
   init() {
