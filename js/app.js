@@ -18,15 +18,18 @@ const megaroster = {
       id: ++this.max,
       name: f.studentName.value,
     }
+
     this.students.push(student)
 
     const listItem = this.buildListItem(student)
     this.studentList.appendChild(listItem)
+    f.reset()
   },
 
   buildListItem(student) {
     const li = document.createElement('li')
     li.textContent = student.name
+    li.dataset.id = student.id
     return li
   },
 }
