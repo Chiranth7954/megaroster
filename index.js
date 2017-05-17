@@ -18,15 +18,15 @@ const App = {
         personRendered.innerHTML = `${input.value + '    '}`
         const btnDelete = this.renderButton(input.value, 'DELETE')
         personRendered.appendChild(btnDelete)
-        btnDelete.addEventListener('click', ((person) => {
+        btnDelete.addEventListener('click', (ev) => {
           personRendered.parentNode.removeChild(personRendered)
-        }))
+        })
         personRendered.appendChild(document.createTextNode('    ')) // aesthetic
         const btnPromote = this.renderButton(input.value, 'PROMOTE')
         personRendered.appendChild(btnPromote)
-        btnPromote.addEventListener('click', ((person) => {
+        btnPromote.addEventListener('click', (ev) => {
           personRendered.style.color = 'blue'
-        }))
+        })
       }
       input.value = ''
     })
