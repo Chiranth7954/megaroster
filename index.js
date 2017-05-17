@@ -25,7 +25,7 @@ const App = {
         const btnPromote = this.renderButton(input.value, 'PROMOTE')
         personRendered.appendChild(btnPromote)
         btnPromote.addEventListener('click', ((person) => {
-          personRendered.style.color = 'red'
+          personRendered.style.color = 'blue'
         }))
       }
       input.value = ''
