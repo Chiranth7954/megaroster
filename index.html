@@ -6,27 +6,30 @@
     <title>Megaroster</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
-    <!--<link ref="stylesheet" href="index.css">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
+    <link ref="stylesheet" href="index.css">-->
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    <h1>Megaroster</h1>
-    <section>
-      <div>
+    <div class="row">
+      <div class="medium-offset-2 medium-8 columns">
+        <h2>Megaroster</h2>
         <form>
-          <p>
-            <label for="personName">Name</label>
-            <input type="text" name="personName">
-          </p>
-          <p>
-            <button type="submit">Add Person</button>
-          </p>
+          <div class="small-9 columns">
+            <input
+              type="text"
+              name="studentName"
+              placeholder="Enter student name"
+            >
+          </div>
+          <div class="small-3 columns">
+            <button type="submit" class="expanded button">Add Student</button>
+          </div>
         </form>
       </div>
-      <div class="details"></div>
-    </section>
+    </div>
+    <div class="details"></div>
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
     <script src="js/vendor/foundation.js"></script>
