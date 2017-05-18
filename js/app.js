@@ -21,7 +21,7 @@ const megaroster = {
     const student = {
       id: ++this.max,
       name: f.studentName.value,
-      promotion: false,
+      promotion: false, //
     }
 
     this.students.unshift(student)
@@ -31,7 +31,7 @@ const megaroster = {
     localStorage.setItem('name', 'student.name') // window.localStorage
     f.reset()
 
-    console.log(this.students)
+    localStorage.setItem('roster', JSON.stringify(this.students))
   },
 
   prependChild(parent, child) {
@@ -53,11 +53,11 @@ const megaroster = {
       .querySelector('button.promote')
       .addEventListener('click', this.promoteStudent.bind(this))
 
-      li
+      li //
         .querySelector('button.moveup')
         .addEventListener('click', this.moveUpStudent.bind(this))
 
-      li
+      li //
         .querySelector('button.movedown')
         .addEventListener('click', this.moveDownStudent.bind(this))
 
@@ -68,16 +68,16 @@ const megaroster = {
     const btn = ev.target
     btn.closest('.student').remove()
     this.students.splice(this.students.indexOf(student), 1) // students array
-    localStorage.removeItem('name', 'student.name')         // local storage
+    localStorage.removeItem('roster', JSON.stringify(this.students))         // local storage
   },
 
   promoteStudent(ev, student) {
     const btn = ev.target
     btn.closest('.student').style.color = 'white'
-    this.students[student].promotion = true
+    this.students[student].promotion = true //
   },
 
-  moveUpStudent(ev) {
+  moveUpStudent(ev) { //
     const btn = ev.target
     const node = btn.closest('.student')
     const parent = node.parentNode
@@ -85,7 +85,7 @@ const megaroster = {
     parent.insertBefore(parent.removeChild(node), prev)
   },
 
-  moveDownStudent(ev) {
+  moveDownStudent(ev) { //
     const btn = ev.target
     const node = btn.closest('.student')
     const parent = node.parentNode
