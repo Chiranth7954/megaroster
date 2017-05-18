@@ -44,6 +44,9 @@ const megaroster = {
     const listItem = this.buildListItem(student)
     this.prependChild(this.studentList, listItem)
     localStorage.setItem('name', 'student.name')
+    if (student.id > this.max) {
+      this.max = student.id
+    }
     this.save()
   },
 
