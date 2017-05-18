@@ -6,9 +6,8 @@
     <title>Megaroster</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css">
-    <link ref="stylesheet" href="index.css">-->
     <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
@@ -37,12 +36,20 @@
       <div class="medium-offset-2 medium-8 columns">
         <ul id="student-list" class="no-bullet">
           <li class="student template clearfix">
-            <span class="student-name"></span>
+            <div class="student-name"></div>
             <span class="actions button-group">
-              <button type="button" class="remove alert button">Remove</button>
-              <button type="button" class="promote success button">Promote</button>
-              <button type="button" class="moveup secondary button">Move Up</button>
-              <button type="button" class="movedown secondary button">Move Down</button>
+              <button type="button" class="remove alert button">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button type="button" class="promote success button">
+                <i class="fa fa-star-o"></i>
+              </button>
+              <button type="button" class="moveup secondary button">
+                <i class="fa fa-arrow-circle-up"></i>
+              </button>
+              <button type="button" class="movedown secondary button">
+                <i class="fa fa-arrow-circle-down"></i>
+              </button>
             </span>
           </li>
         </ul>

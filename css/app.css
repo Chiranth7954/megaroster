@@ -1,6 +1,7 @@
 * {
   font-family: Garamond, serif;
   font-weight: bold;
+  font-size: 20px;
 }
 
 body {
@@ -23,14 +24,21 @@ h2 {
   border: 1px dashed #ddd;
   background-color: teal;
   padding: 0.75rem 1.25rem;
+  height: 4rem;
   border-radius: 10px;
-  /*height: 41px;
-  text-indent: 10px;
-  background-color: teal;*/
 }
 
 .student + .student {
   border-top: 0;
+}
+
+.student-name {
+  float: left;
+  line-height: 38px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - 200px);
 }
 
 .actions {
