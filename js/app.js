@@ -1,20 +1,19 @@
 $(document).foundation()
 
-const megaroster = {
-  students: [],
-
-  init() {
+class Megaroster {
+  constructor() {
     this.studentList = document.querySelector('#student-list')
+    this.students = []
     this.max = 0
     this.setupEventListeners()
     this.load()
-  },
+  }
 
   setupEventListeners() {
     document
       .querySelector('#new-student')
       .addEventListener('submit', this.addStudentViaForm.bind(this))
-  },
+  }
 
   load() {
     const rosterString = localStorage.getItem('roster')
@@ -24,7 +23,7 @@ const megaroster = {
         .reverse()
         .map(this.addStudent.bind(this))
     }
-  },
+  }
 
   addStudentViaForm(ev) {
     ev.preventDefault()
@@ -35,7 +34,7 @@ const megaroster = {
     }
     this.addStudent(student)
     f.reset()
-  },
+  }
 
   addStudent(student) {
     this.students.unshift(student)
@@ -47,11 +46,11 @@ const megaroster = {
       this.max = student.id
     }
     this.save()
-  },
+  }
 
   prependChild(parent, child) {
     parent.insertBefore(child, parent.firstChild)
-  },
+  }
 
   buildListItem(student) {
     const template = document.querySelector('.student.template')
@@ -83,11 +82,11 @@ const megaroster = {
         .addEventListener('click', this.moveDownStudent.bind(this))
 
     return li
-  },
+  }
 
   save() {
     localStorage.setItem('roster', JSON.stringify(this.students))
-  },
+  }
 
   removeStudent(ev) {
     const btn = ev.target
@@ -103,7 +102,7 @@ const megaroster = {
 
     li.remove()
     this.save()
-  },
+  }
 
   promoteStudent(student, ev) {
     const btn = ev.target
@@ -117,7 +116,7 @@ const megaroster = {
     }
 
     this.save()
-  },
+  }
 
   moveUpStudent(ev) {
     const btn = ev.target
@@ -125,7 +124,7 @@ const megaroster = {
     const parent = node.parentNode
     const prev = node.previousSibling
     parent.insertBefore(parent.removeChild(node), prev)
-  },
+  }
 
   moveDownStudent(ev) {
     const btn = ev.target
@@ -133,10 +132,10 @@ const megaroster = {
     const parent = node.parentNode
     const next = node.nextSibling.nextSibling
     parent.insertBefore(parent.removeChild(node), next)
-  },
+  }
 
   removeClassName(el, className) {
     el.className = el.className.replace(className, '').trim()
-  },
+  }
 }
-megaroster.init()
+const roster = new Megaroster() // for debugging purposes

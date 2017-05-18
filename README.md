@@ -24,4 +24,6 @@
 
 ## Super Mega Bonus Credit Hyper Fighting
 
-* Add a promote button to every list item that changes the appearance(e.g. changes the background color, adds a border, etc.) of that item when clicked.
+* Add a promote button to every list item that changes the appearance (e.g. changes the background color, adds a border, etc.) of that item when clicked.
+* Make "move down" work if you haven't already.
+* Allow the editing of student names after they're already in the list.
