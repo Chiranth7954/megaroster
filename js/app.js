@@ -32,7 +32,6 @@ const megaroster = {
     const student = {
       id: ++this.max,
       name: f.studentName.value,
-      promotion: false,
     }
     this.addStudent(student)
     f.reset()
@@ -60,6 +59,11 @@ const megaroster = {
     li.querySelector('.student-name').textContent = student.name
     li.setAttribute('title', student.name) // hover over name shows name IRL
     li.dataset.id = student.id
+
+    if (student.promoted) {
+      li.classList.add('promoted')
+    }
+
     this.removeClassName(li, 'template')
 
     li
@@ -68,7 +72,7 @@ const megaroster = {
 
     li
       .querySelector('button.promote')
-      .addEventListener('click', this.promoteStudent.bind(this))
+      .addEventListener('click', this.promoteStudent.bind(this, student))
 
       li
         .querySelector('button.moveup')
@@ -85,7 +89,7 @@ const megaroster = {
     localStorage.setItem('roster', JSON.stringify(this.students))
   },
 
-  removeStudent(ev, student) {
+  removeStudent(ev) {
     const btn = ev.target
     const li = btn.closest('.student')
 
@@ -101,10 +105,18 @@ const megaroster = {
     this.save()
   },
 
-  promoteStudent(ev, student) {
+  promoteStudent(student, ev) {
     const btn = ev.target
-    btn.closest('.student').style.color = 'white'
-    this.students[student].promotion = true
+    const li = btn.closest('.student')
+    student.promoted = !student.promoted
+
+    if (student.promoted) {
+      li.classList.add('promoted')
+    } else {
+      li.classList.remove('promoted')
+    }
+
+    this.save()
   },
 
   moveUpStudent(ev) {
