@@ -1,3 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Garamond, serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: sans-serif;
+  font-style: oblique;
+}
+
 .template {
   visibility: hidden;
+}
+
+li {
+  list-style: none;
+}
+
+.student {
+  background-color: teal;
+  border-radius: 10px;
+  height: 41px;
+  text-indent: 10px;
+}
+
+.button {
+  align-content: center;
+  border-radius: 30px;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.student-name {
+  vertical-align: 7px;
 }

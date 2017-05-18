@@ -21,12 +21,15 @@ const megaroster = {
     const student = {
       id: ++this.max,
       name: f.studentName.value,
+      promotion: false,
     }
 
     this.students.unshift(student)
+    console.log(this.students)
 
     const listItem = this.buildListItem(student)
     this.prependChild(this.studentList, listItem)
+    localStorage.setItem('name', 'student.name') // window.localStorage
     f.reset()
   },
 
@@ -63,12 +66,14 @@ const megaroster = {
   removeStudent(ev, student) {
     const btn = ev.target
     btn.closest('.student').remove()
-    this.students.splice(this.students.indexOf(student), 1)
+    this.students.splice(this.students.indexOf(student), 1) // students array
+    localStorage.removeItem('name', 'student.name')         // local storage
   },
 
-  promoteStudent(ev) {
+  promoteStudent(ev, student) {
     const btn = ev.target
-    btn.closest('.student').style.color = 'blue'
+    btn.closest('.student').style.color = 'white'
+    student.promotion = true
   },
 
   moveUpStudent(ev) {
