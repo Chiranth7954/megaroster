@@ -25,12 +25,13 @@ const megaroster = {
     }
 
     this.students.unshift(student)
-    console.log(this.students)
 
     const listItem = this.buildListItem(student)
     this.prependChild(this.studentList, listItem)
     localStorage.setItem('name', 'student.name') // window.localStorage
     f.reset()
+
+    console.log(this.students)
   },
 
   prependChild(parent, child) {
@@ -73,7 +74,7 @@ const megaroster = {
   promoteStudent(ev, student) {
     const btn = ev.target
     btn.closest('.student').style.color = 'white'
-    student.promotion = true
+    this.students[student].promotion = true
   },
 
   moveUpStudent(ev) {

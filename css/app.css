@@ -5,9 +5,16 @@
   font-weight: bold;
 }
 
+body {
+  background: ##026c4c;
+  background-image: url("zenbg-1.png"), url("zenbg-2.png");
+  background-repeat: repeat-x, repeat;
+}
+
 h2 {
   font-family: sans-serif;
   font-style: oblique;
+  color: white;
 }
 
 .template {
