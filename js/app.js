@@ -7,31 +7,44 @@ const megaroster = {
     this.studentList = document.querySelector('#student-list')
     this.max = 0
     this.setupEventListeners()
+    this.load()
   },
 
   setupEventListeners() {
     document
       .querySelector('#new-student')
-      .addEventListener('submit', this.addStudent.bind(this))
+      .addEventListener('submit', this.addStudentViaForm.bind(this))
   },
 
-  addStudent(ev) {
+  load() {
+    const rosterString = localStorage.getItem('roster')
+    const rosterArray = JSON.parse(rosterString)
+    if (rosterArray) {
+      rosterArray
+        .reverse()
+        .map(this.addStudent.bind(this))
+    }
+  },
+
+  addStudentViaForm(ev) {
     ev.preventDefault()
     const f = ev.target
     const student = {
       id: ++this.max,
       name: f.studentName.value,
-      promotion: false, //
+      promotion: false,
     }
+    this.addStudent(student)
+    f.reset()
+  },
 
+  addStudent(student) {
     this.students.unshift(student)
 
     const listItem = this.buildListItem(student)
     this.prependChild(this.studentList, listItem)
-    localStorage.setItem('name', 'student.name') // window.localStorage
-    f.reset()
-
-    localStorage.setItem('roster', JSON.stringify(this.students))
+    localStorage.setItem('name', 'student.name')
+    this.save()
   },
 
   prependChild(parent, child) {
@@ -53,31 +66,44 @@ const megaroster = {
       .querySelector('button.promote')
       .addEventListener('click', this.promoteStudent.bind(this))
 
-      li //
+      li
         .querySelector('button.moveup')
         .addEventListener('click', this.moveUpStudent.bind(this))
 
-      li //
+      li
         .querySelector('button.movedown')
         .addEventListener('click', this.moveDownStudent.bind(this))
 
     return li
   },
 
+  save() {
+    localStorage.setItem('roster', JSON.stringify(this.students))
+  },
+
   removeStudent(ev, student) {
     const btn = ev.target
-    btn.closest('.student').remove()
-    this.students.splice(this.students.indexOf(student), 1) // students array
-    localStorage.removeItem('roster', JSON.stringify(this.students))         // local storage
+    const li = btn.closest('.student')
+
+    for (let i = 0; i < this.students.length; i++) {
+      let currentId = this.students[i].id.toString()
+      if (currentId === li.dataset.id) {
+        this.students.splice(i, 1)
+        break
+      }
+    }
+
+    li.remove()
+    this.save()
   },
 
   promoteStudent(ev, student) {
     const btn = ev.target
     btn.closest('.student').style.color = 'white'
-    this.students[student].promotion = true //
+    this.students[student].promotion = true
   },
 
-  moveUpStudent(ev) { //
+  moveUpStudent(ev) {
     const btn = ev.target
     const node = btn.closest('.student')
     const parent = node.parentNode
@@ -85,7 +111,7 @@ const megaroster = {
     parent.insertBefore(parent.removeChild(node), prev)
   },
 
-  moveDownStudent(ev) { //
+  moveDownStudent(ev) {
     const btn = ev.target
     const node = btn.closest('.student')
     const parent = node.parentNode
