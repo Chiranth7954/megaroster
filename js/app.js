@@ -45,12 +45,46 @@ const megaroster = {
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
 
+    li
+      .querySelector('button.promote')
+      .addEventListener('click', this.promoteStudent.bind(this))
+
+      li
+        .querySelector('button.moveup')
+        .addEventListener('click', this.moveUpStudent.bind(this))
+
+      li
+        .querySelector('button.movedown')
+        .addEventListener('click', this.moveDownStudent.bind(this))
+
     return li
   },
 
-  removeStudent(ev) {
+  removeStudent(ev, student) {
     const btn = ev.target
     btn.closest('.student').remove()
+    this.students.splice(this.students.indexOf(student), 1)
+  },
+
+  promoteStudent(ev) {
+    const btn = ev.target
+    btn.closest('.student').style.color = 'blue'
+  },
+
+  moveUpStudent(ev) {
+    const btn = ev.target
+    const node = btn.closest('.student')
+    const parent = node.parentNode
+    const prev = node.previousSibling
+    parent.insertBefore(parent.removeChild(node), prev)
+  },
+
+  moveDownStudent(ev) {
+    const btn = ev.target
+    const node = btn.closest('.student')
+    const parent = node.parentNode
+    const next = node.nextSibling.nextSibling
+    parent.insertBefore(parent.removeChild(node), next)
   },
 
   removeClassName(el, className) {

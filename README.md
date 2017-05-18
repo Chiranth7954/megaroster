@@ -10,14 +10,17 @@
 ## Bonus Credit
 
 * Create at most one global variable.
+* Fool around with Foundation and/or CSS to make it look nicer.
 
 ## Mega Bonus Credit
 
 * Add names to the top of the list instead of the bottom.
+* Add buttons to change the position of the student within the list. In other words, add “Move Up” and “Move Down” buttons.
 
 ## Super Mega Bonus Credit
 
 * Add a delete button to every list item that removes the name from the list when clicked.
+* Persist the student data using window.localStorage.
 
 ## Super Mega Bonus Credit Hyper Fighting
 
