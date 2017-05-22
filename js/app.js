@@ -64,7 +64,12 @@ class Megaroster {
     }
 
     this.removeClassName(li, 'template')
+    this.setUpActions(li, student)
 
+    return li
+  }
+
+  setUpActions(li, student) {
     li
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
@@ -74,14 +79,12 @@ class Megaroster {
       .addEventListener('click', this.promoteStudent.bind(this, student))
 
       li
-        .querySelector('button.moveup')
-        .addEventListener('click', this.moveUpStudent.bind(this))
+        .querySelector('button.move-up')
+        .addEventListener('click', this.moveUpStudent.bind(this, student))
 
       li
-        .querySelector('button.movedown')
-        .addEventListener('click', this.moveDownStudent.bind(this))
-
-    return li
+        .querySelector('button.move-down')
+        .addEventListener('click', this.moveDownStudent.bind(this, student))
   }
 
   save() {
@@ -118,20 +121,38 @@ class Megaroster {
     this.save()
   }
 
-  moveUpStudent(ev) {
+  moveUpStudent(student, ev) {
     const btn = ev.target
-    const node = btn.closest('.student')
-    const parent = node.parentNode
-    const prev = node.previousSibling
-    parent.insertBefore(parent.removeChild(node), prev)
+    const li = btn.closest('.student')
+
+    const index = this.students.findIndex((currentStudent, i) => {
+      return currentStudent.id === student.id
+    })
+
+    if (index > 0) {
+      const previousStudent = this.students[index - 1]
+      this.students[index - 1] = student
+      this.students[index] = previousStudent
+      this.studentList.insertBefore(li, li.previousElementSibling)
+      this.save()
+    }
   }
 
-  moveDownStudent(ev) {
+  moveDownStudent(student, ev) {
     const btn = ev.target
-    const node = btn.closest('.student')
-    const parent = node.parentNode
-    const next = node.nextSibling.nextSibling
-    parent.insertBefore(parent.removeChild(node), next)
+    const li = btn.closest('.student')
+
+    const index = this.students.findIndex((currentStudent, i) => {
+      return currentStudent.id === student.id
+    })
+
+    if (index > 0) {
+      const nextStudent = this.students[index + 1]
+      this.students[index + 1] = student
+      this.students[index] = nextStudent
+      this.studentList.insertBefore(li, li.nextElementSibling.nextElementSibling)
+      this.save()
+    }
   }
 
   removeClassName(el, className) {

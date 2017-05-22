@@ -29,6 +29,11 @@ h2 {
   border-radius: 10px;
 }
 
+/*.student:first-child button.move-up {
+  opacity: 0.25;
+  cursor: not-allowed;
+}*/
+
 .student + .student {
   border-top: 0;
 }
