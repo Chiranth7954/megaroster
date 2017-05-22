@@ -21,6 +21,7 @@
 
 * Add a delete button to every list item that removes the name from the list when clicked.
 * Persist the student data using window.localStorage.
+* Allow the editing of student names after they’re already in the list.
 
 ## Super Mega Bonus Credit Hyper Fighting
 

@@ -30,12 +30,12 @@ h2 {
 }
 
 .student:first-child button.move-up {
-  opacity: 0.25;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
-.student:nth-last-child(2) button.move-down {
-  opacity: 0.25;
+.student:last-child button.move-down {
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
@@ -68,4 +68,14 @@ h2 {
 .promoted {
   background-color: #ffa807;
   border-color: #000;
+}
+
+[contenteditable]:hover {
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 2px;
+}
+
+[contenteditable]:focus {
+  outline-width: 5px;
 }

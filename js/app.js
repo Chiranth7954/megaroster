@@ -71,6 +71,14 @@ class Megaroster {
 
   setUpActions(li, student) {
     li
+      .querySelector('[contenteditable]')
+      .addEventListener('blur', this.editStudent.bind(this, student))
+
+    li
+      .querySelector('[contenteditable]')
+      .addEventListener('keypress', this.updateStudent.bind(this))
+
+    li
       .querySelector('button.remove')
       .addEventListener('click', this.removeStudent.bind(this))
 
@@ -89,6 +97,20 @@ class Megaroster {
 
   save() {
     localStorage.setItem('roster', JSON.stringify(this.students))
+  }
+
+  editStudent(student, ev) {
+    // actual editing happens because <>[contenteditable]="true"
+    student.name = ev.target.textContent
+    this.save()
+  }
+
+  updateStudent(ev) {
+    // updates with Enter press
+    if (ev.keyCode === 13) {
+      ev.preventDefault()
+      ev.target.blur()
+    }
   }
 
   removeStudent(ev) {
@@ -146,7 +168,7 @@ class Megaroster {
       return currentStudent.id === student.id
     })
 
-    if (index < this.max - 1) {
+    if (index < this.students.length - 1) {
       const nextStudent = this.students[index + 1]
       this.students[index + 1] = student
       this.students[index] = nextStudent
