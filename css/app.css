@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+
 * {
   font-family: Garamond, serif;
   font-weight: bold;
@@ -11,10 +13,11 @@ body {
 }
 
 h2 {
-  font-family: sans-serif;
+  font-family: 'Acme', sans-serif;
+  text-transform: lowercase;
   font-style: oblique;
   color: #fff;
-  text-shadow: 2px 2px black;
+  text-shadow: 3px 3px black;
 }
 
 .template {
@@ -27,6 +30,7 @@ h2 {
   padding: 0.75rem 1.25rem;
   height: 4rem;
   border-radius: 10px;
+  transition: 0.25s;
 }
 
 .student:first-child button.move-up {
@@ -57,17 +61,25 @@ h2 {
   margin-bottom: 0;
 }
 
-.button {
+.actions .button {
   border-radius: 30px;
+  color: #fff;
 }
 
-.button:hover {
+.actions .button:hover {
   opacity: 0.7;
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.actions .button:enabled {
+  color: #fff;
 }
 
 .promoted {
   background-color: #ffa807;
   border-color: #000;
+  color: #fff;
 }
 
 [contenteditable]:hover {

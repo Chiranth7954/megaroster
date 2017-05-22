@@ -100,14 +100,12 @@ class Megaroster {
   }
 
   editStudent(student, ev) {
-    // actual editing happens because <>[contenteditable]="true"
-    student.name = ev.target.textContent
+    student.name = ev.target.textContent // actual editing in HTML
     this.save()
   }
 
   updateStudent(ev) {
-    // updates with Enter press
-    if (ev.keyCode === 13) {
+    if (ev.keyCode === 13) { // updates with Enter press
       ev.preventDefault()
       ev.target.blur()
     }
