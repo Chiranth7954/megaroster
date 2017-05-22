@@ -29,10 +29,15 @@ h2 {
   border-radius: 10px;
 }
 
-/*.student:first-child button.move-up {
+.student:first-child button.move-up {
   opacity: 0.25;
   cursor: not-allowed;
-}*/
+}
+
+.student:nth-last-child(2) button.move-down {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
 
 .student + .student {
   border-top: 0;

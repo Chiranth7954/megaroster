@@ -146,7 +146,7 @@ class Megaroster {
       return currentStudent.id === student.id
     })
 
-    if (index > 0) {
+    if (index < this.max - 1) {
       const nextStudent = this.students[index + 1]
       this.students[index + 1] = student
       this.students[index] = nextStudent
